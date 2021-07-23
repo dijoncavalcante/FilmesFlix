@@ -1,11 +1,12 @@
-package com.br.natanfc.filmesflix
+package com.br.natanfc.filmesflix.presenter
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
+import com.br.natanfc.filmesflix.R
 import com.br.natanfc.filmesflix.domain.Movie
-import com.br.natanfc.filmesflix.viewModel.MovieListViewModel
+import com.br.natanfc.filmesflix.framework.viewModel.MovieListViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
