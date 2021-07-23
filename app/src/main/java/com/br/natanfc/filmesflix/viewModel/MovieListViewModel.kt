@@ -1,28 +1,22 @@
 package com.br.natanfc.filmesflix.viewModel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.br.natanfc.filmesflix.api.MovieRestApiTask
 import com.br.natanfc.filmesflix.model.Movie
+import com.br.natanfc.filmesflix.repository.MovieRepository
 
 class MovieListViewModel : ViewModel() {
 
-    private val listOfMovies = arrayListOf(
-        Movie(
-            id = 0,
-            titulo = "Kotlin is Easy",
-            descricao = null,
-            imagem = null,
-            dataLancamento = null
-        ),
-        Movie(
-            id = 1,
-            titulo = "Dijon in Action",
-            descricao = null,
-            imagem = null,
-            dataLancamento = null
-        )
-    )
+    companion object {
+        const val TAG = "MovieListViewModel"
+    }
+
+    private val movieRestApiTask = MovieRestApiTask()
+    private val movieRepository = MovieRepository(movieRestApiTask)
+
 
     private var _movieList = MutableLiveData<List<Movie>>()
     val movieList: LiveData<List<Movie>>
@@ -33,6 +27,12 @@ class MovieListViewModel : ViewModel() {
     }
 
     private fun getAllMovies() {
-        _movieList.value = listOfMovies
+        Thread {
+            try {
+                _movieList.postValue(movieRepository.getAllMovies())
+            } catch (exception: Exception) {
+                Log.d(TAG, exception.message.toString())
+            }
+        }
     }
 }
