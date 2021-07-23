@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 interface MovieApi {
     //https://raw.githubbusercontent.com/natanfelipe/FilmesFlixJson/master/movieList
-    @GET("natanfelipe/FilmesFlixJson/master/movieList")
+    @GET("natanfelipe/FilmesFlixJson/master/moviesList")
     fun getAllMovies(): Call<List<Movie>>
 }
