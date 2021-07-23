@@ -3,9 +3,8 @@ package com.br.natanfc.filmesflix
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.br.natanfc.filmesflix.model.Movie
+import com.br.natanfc.filmesflix.domain.Movie
 import com.br.natanfc.filmesflix.viewModel.MovieListViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
